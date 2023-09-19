@@ -44,6 +44,11 @@ public class GameManager : MonoBehaviour
     public GameObject spawner;
 
     /// <summary>
+    /// Maximal value of in-game level speed.
+    /// </summary>
+    public float maxLevelSpeed = 5.0f;
+
+    /// <summary>
     /// Current accumulated score.
     /// </summary>
     private float mCurrentScore = 0.0f;
@@ -121,6 +126,10 @@ public class GameManager : MonoBehaviour
             // Update the score text.
             GetChildNamed(scoreText, "Value").GetComponent<Text>().text = $"{(int)(mCurrentScore)}";
         }
+
+        // Speeds up in-game time exponentialy based on current score.
+        if ((int)mCurrentScore != 0 && Time.timeScale < maxLevelSpeed && !isPaused)
+            Time.timeScale = Mathf.Pow(1.02157f, mCurrentScore - 1);
     }
 
     /// <summary>
@@ -174,7 +183,7 @@ public class GameManager : MonoBehaviour
     {
         if (isPaused)
         {
-            Time.timeScale = 1.0f;
+            Time.timeScale = Mathf.Pow(1.02157f, mCurrentScore - 1);
             pauseText.SetActive(false);
             helpText.SetActive(false);
             isPaused = false;
