@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
             GetChildNamed(scoreText, "Value").GetComponent<Text>().text = $"{(int)(mCurrentScore)}";
         }
 
-        // Speeds up in-game time exponentialy based on current score.
+        // Speeds up in-game time exponentially based on current score.
         if ((int)mCurrentScore != 0 && Time.timeScale < maxLevelSpeed && !isPaused)
             Time.timeScale = Mathf.Pow(1.02157f, mCurrentScore - 1);
     }
