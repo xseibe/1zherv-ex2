@@ -837,6 +837,7 @@ MonoBehaviour:
   scoreText: {fileID: 892753377}
   player: {fileID: 706129582}
   spawner: {fileID: 1047354506}
+  maxLevelSpeed: 5
 --- !u!4 &535337661
 Transform:
   m_ObjectHideFlags: 0
@@ -1646,10 +1647,10 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.24121779
-    y: 0
-    width: 0.5175644
-    height: 1
+    x: 0
+    y: 0.17986426
+    width: 1
+    height: 0.6402715
   near clip plane: 0.1
   far clip plane: 10
   field of view: 60
@@ -1836,7 +1837,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObstacles: 1
   spawnFrequencyMean: 2
-  spawnFrequencyStd: 0
+  spawnFrequencyStd: 0.5
   spawnOffset:
     x: 0
     y: 2
