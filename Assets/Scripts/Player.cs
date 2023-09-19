@@ -116,6 +116,10 @@ public class Player : MonoBehaviour
     /// </summary>
     void Update()
     {
+        // If game is paused
+        if (Time.timeScale == 0)
+            return;
+
         // Process player input.
         var verticalMovement = Input.GetAxisRaw("Vertical");
         var horizontalMovement = Input.GetAxisRaw("Horizontal");

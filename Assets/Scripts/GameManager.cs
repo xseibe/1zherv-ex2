@@ -12,7 +12,17 @@ public class GameManager : MonoBehaviour
     /// GameObject used for the start text.
     /// </summary>
     public GameObject startText;
-    
+
+    /// <summary>
+    /// GameObject used for the help text.
+    /// </summary>
+    public GameObject helpText;
+
+    /// <summary>
+    /// GameObject used for the pause text.
+    /// </summary>
+    public GameObject pauseText;
+
     /// <summary>
     /// GameObject used for the loss text.
     /// </summary>
@@ -42,6 +52,11 @@ public class GameManager : MonoBehaviour
     /// Is the game lost?
     /// </summary>
     private bool mGameLost = false;
+
+    /// <summary>
+    /// Is the game paused?
+    /// </summary>
+    private bool isPaused = false;
 
     /// <summary>
     /// Did we start the game?
@@ -85,11 +100,14 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Update()
     {
-        Debug.Log(sGameStarted);
-
         // Start the game after the first "Jump".
         if (!sGameStarted && Input.GetButtonDown("Jump"))
         { StartGame();
+        }
+
+        // Pause or Unpause the game on P key.
+        if (sGameStarted && Input.GetKeyDown(KeyCode.P))
+        { PauseGame();
         }
         
         // Reset the game if requested.
@@ -119,6 +137,7 @@ public class GameManager : MonoBehaviour
         if (sGameStarted)
         { // Setup already started game -> Retry.
             startText.SetActive(false);
+            helpText.SetActive(false);
             scoreText.SetActive(true);
             lossText.SetActive(false);
         }
@@ -129,6 +148,7 @@ public class GameManager : MonoBehaviour
             
             // Setup the text.
             startText.SetActive(true);
+            helpText.SetActive(true);
             scoreText.SetActive(false);
             lossText.SetActive(false);
         }
@@ -145,6 +165,27 @@ public class GameManager : MonoBehaviour
         // Reload the scene as started.
         sGameStarted = true; 
         ResetGame();
+    }
+
+    /// <summary>
+    /// Pause or unpause the game based on variable value
+    /// </summary>
+    public void PauseGame()
+    {
+        if (isPaused)
+        {
+            Time.timeScale = 1.0f;
+            pauseText.SetActive(false);
+            helpText.SetActive(false);
+            isPaused = false;
+        }
+        else
+        {
+            pauseText.SetActive(true);
+            helpText.SetActive(true);
+            Time.timeScale = 0.0f;
+            isPaused = true;
+        }
     }
     
     /// <summary>
