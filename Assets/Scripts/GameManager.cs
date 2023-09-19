@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
         }
         
         // Reset the game if requested.
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetButtonDown("Cancel") && !isPaused)
         { ResetGame(); }
 
         if (sGameStarted && !mGameLost)
