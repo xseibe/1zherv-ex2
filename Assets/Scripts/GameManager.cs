@@ -85,9 +85,12 @@ public class GameManager : MonoBehaviour
     /// </summary>
     void Update()
     {
+        Debug.Log(sGameStarted);
+
         // Start the game after the first "Jump".
         if (!sGameStarted && Input.GetButtonDown("Jump"))
-        { StartGame(); }
+        { StartGame();
+        }
         
         // Reset the game if requested.
         if (Input.GetButtonDown("Cancel"))
