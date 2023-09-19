@@ -1268,9 +1268,9 @@ MonoBehaviour:
   spawnFrequencyStd: 0
   spawnOffset:
     x: 0
-    y: 1
+    y: 2
     z: 0
-  spawnSize: 1
+  spawnSize: 0.7
   spawnLayer: Obstacle
   obstaclePrefab: {fileID: 444823138257878674, guid: d9e6dffab2dc3ef4dbf678bf85c63c93, type: 3}
 --- !u!1 &1213650991
